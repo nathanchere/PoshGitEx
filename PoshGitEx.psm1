@@ -1,4 +1,13 @@
 #Requires -Version 2.0
+#
+# TODO:
+# - option to check if last message is merge commit and replace with random message (for the 'no merge commit' police)
+#
+
+Function Git-Fix-Commit
+{
+	git commit --amend -m "$((New-Object System.Net.WebClient).DownloadString("http://whatthecommit.com/index.txt"))"
+}
 
 #Because git is retarded and often outputs normal result messages to stderr we have to do bullshit like this
 Function Invoke-Git
@@ -24,3 +33,4 @@ Function Invoke-Git
 }
 
 Export-ModuleMember -Function Invoke-Git
+Export-ModuleMember -Function Git-*
